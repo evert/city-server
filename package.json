@@ -25,11 +25,14 @@
   "dependencies": {
     "@curveball/accesslog": "^0.4.0",
     "@curveball/bodyparser": "^0.6.1",
+    "@curveball/browser": "^0.20.0",
     "@curveball/controller": "^0.5.0",
     "@curveball/core": "^0.21.0",
     "@curveball/links": "^0.3.0",
     "@curveball/problem": "^0.5.0",
-    "@curveball/router": "^0.5.0"
+    "@curveball/router": "^0.5.0",
+    "@curveball/static": "^0.4.0",
+    "@curveball/validator": "^0.10.0"
   },
   "author": "Evert Pot (https://evertpot.com/)",
   "license": "MIT",

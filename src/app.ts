@@ -4,6 +4,7 @@ import problem from '@curveball/problem';
 import bodyParser from '@curveball/bodyparser';
 import routes from './routes';
 import links from '@curveball/links';
+import browser from '@curveball/browser';
 
 const app = new Application();
 
@@ -21,6 +22,8 @@ app.use(bodyParser());
 // The 'links' middleware automatically parses HTTP Link headers, and can also
 // write them back in the response via ctx.request.links and ctx.response.links.
 app.use(links());
+
+app.use(browser());
 
 app.use(...routes);
 
