@@ -1,5 +1,5 @@
 /* eslint no-console:0 "@typescript-eslint/no-var-requires": 0 */
-import app from './app';
+import app from './app.js';
 import { VERSION } from '@curveball/core';
 
 console.log('⚾ %s', VERSION);

@@ -2,9 +2,11 @@ import { Application } from '@curveball/core';
 import accessLog from '@curveball/accesslog';
 import problem from '@curveball/problem';
 import bodyParser from '@curveball/bodyparser';
-import routes from './routes';
 import links from '@curveball/links';
-import browser from '@curveball/browser';
+// import browser from '@curveball/browser';
+import cors from '@curveball/cors';
+
+import routes from './routes.js';
 
 const app = new Application();
 
@@ -23,7 +25,9 @@ app.use(bodyParser());
 // write them back in the response via ctx.request.links and ctx.response.links.
 app.use(links());
 
-app.use(browser());
+// app.use(browser());
+
+app.use(cors());
 
 app.use(...routes);
 
