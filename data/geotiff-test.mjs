@@ -42,10 +42,10 @@ console.info(`Looking up GPS coordinate (${lat.toFixed(6)},${long.toFixed(6)})`)
 const [x, y] = transform(-79.394554,43.630390,  gpsToPixel, true);
 
 
-167.22222222224997, -45.8333333333442
 console.info(`Corresponding tile pixel coordinate: [${x*32}][${y*32}]`);
 
 console.info('GPS of yacht club: [' + transform(-79.35535008613182, 43.643273293998135, gpsToPixel,true).map(i => i*32).join(',') + ']');
+console.info('GPS of netherlands club: [' + transform(4,52, gpsToPixel,true).join(',') + ']');
 
 // And as each pixel in the tile covers a geographic area, not a single
 // GPS coordinate, get the area that this pixel covers:
