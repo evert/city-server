@@ -8,7 +8,6 @@ export async function getChunk(box: Box): Promise<number[]> {
   const rasters = await image.readRasters({
     window: box,
   });
-  console.log(rasters);
   return Array.from(rasters[0] as Uint8Array);
 
 }
@@ -52,6 +51,12 @@ export function getGpsFromPixels(x:number, y:number) {
 
 }
 
+export function getPixelsFromGps(x:number, y:number) {
+
+  const gpsToPixel:Matrix = [-gx / sx, 1 / sx, 0, -gy / sy, 0, 1 / sy];
+  return transform(x, y, gpsToPixel, true);
+
+}
 
 
 

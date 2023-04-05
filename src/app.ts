@@ -5,7 +5,7 @@ import bodyParser from '@curveball/bodyparser';
 import links from '@curveball/links';
 // import browser from '@curveball/browser';
 import cors from '@curveball/cors';
-
+import serveFiles from '@curveball/static';
 import routes from './routes.js';
 
 const app = new Application();
@@ -30,5 +30,16 @@ app.use(links());
 app.use(cors());
 
 app.use(...routes);
+
+app.use( (ctx,next) => {
+  if (ctx.path === '/') {
+    ctx.redirect(301, '/client/index.html');
+  } else return next();
+});
+
+app.use(serveFiles({
+  staticDir: '../client',
+  pathPrefix: '/client',
+}));
 
 export default app;

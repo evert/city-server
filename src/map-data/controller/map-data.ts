@@ -1,6 +1,6 @@
 import { Controller } from '@curveball/controller';
 import { Context } from '@curveball/core';
-import { getChunk, getGpsFromPixels } from './service.js';
+import { getChunk, getGpsFromPixels } from './../service.js';
 
 class MapDataController extends Controller {
 
@@ -44,6 +44,10 @@ class MapDataController extends Controller {
 }
 
 const C3S = {
+  HERBACEOUS: 11,
+  SHRUB: 12,
+  TREE_START: 60,
+  TREE_END: 110,
   URBAN: 190,
   BARE: 200,
   WATER: 210,
@@ -55,15 +59,24 @@ const MICROPOLIS = {
   WATER1: 3,
   WATER2: 4,
   RESIDENTIAL_R: 244,
+  TREE: 37,
+  TREE_2: 41,
+  TREE_3: 42,
 };
 
 function transformTileType(inputType: number): number {
+
+  if (inputType >= C3S.TREE_START && inputType <= C3S.TREE_END) {
+    return MICROPOLIS.TREE;
+  }
 
   switch(inputType) {
     case C3S.URBAN: return MICROPOLIS.RESIDENTIAL_R;
     case C3S.BARE: return MICROPOLIS.DIRT;
     case C3S.WATER: return MICROPOLIS.WATER1;
     case C3S.SNOWICE: return MICROPOLIS.WATER2;
+    case C3S.HERBACEOUS: return MICROPOLIS.TREE_2;
+    case C3S.SHRUB: return MICROPOLIS.TREE_3;
     default: return inputType;
   }
 
